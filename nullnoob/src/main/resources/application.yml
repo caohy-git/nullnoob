@@ -1,0 +1,35 @@
+server:
+   port: 9000
+   
+spring: 
+   application:
+      name: nullnoob
+   datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 12345678
+      url: jdbc:mysql://127.0.0.1:3306/nullnoob?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+      hikari:
+         minimum-idle: 5
+         maximum-pool-size: 30
+         auto-commit: true
+         idle-timeout: 18000
+         pool-name: DatebookHikariCP
+         max-lifetime: 1800000
+         connection-timeout: 30000
+         connection-test-query: SELECT 1
+         
+mybatis:
+   configuration:
+      mapUnderscoreToCamelCase: true
+      map-underscore-to-camel-case: true
+
+mybatis-plus:
+   mapper-locations:
+     - classpath:mapper/*.xml
+   type-aliases-package: module.entity
+   global-config:
+      db-config:
+        logic-delete-value: 1
+        logic-not-delete-value: 0
