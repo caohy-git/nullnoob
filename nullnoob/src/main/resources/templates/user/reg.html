@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Free Registration</title>
+<!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<style>
+*{
+	padding: 0;
+	margin: 0;
+}
+html,body{
+	height: 100%;
+
+}
+.reg{
+	width: 100%;
+	height: 100%;
+}
+.content{
+	height:100%;
+	width:60%;
+	border: 1px solid black;
+	margin: 0 auto;
+}
+.content_item{
+	width:60%;
+	height:100%;
+	margin:0 auto;
+	border: 1px solid black;
+	
+}
+</style>
+<script type="text/javascript">
+	function submit(){
+		$.ajax({
+			type: 'POST',
+			url: '${ctx!}/user/add',
+			data: $('#formdata').serializeArray(),
+			success: function(result){
+				console.log(result)
+				if(result.code == 0){
+					window.location.href="${ctx!}/user/regSuccess";
+				}else{
+					alert(result.msg)
+				}
+			},
+		});
+	}
+	
+</script>
+</head>
+<body>
+    <div class="reg">
+    	<div class="content">
+    		<div class="content_item">
+    			
+    			<form id="formdata">
+    				<div class="item">
+		    			<label>Nationality :</label>
+		    			<select name="nationality">
+		    				<option>China</option>
+		    				<option>America</option>
+		    			</select>
+	    			</div>
+	    			<div class="item">
+		    			<label>LogName :</label>
+		    			<input name="username" type="text" value=""/>
+	    			</div>
+	    			<div class="item">
+		    			<label>Password :</label>
+		    			<input name="password" type="password" value=""/>
+	    			</div>
+	    			<div class="item">
+		    			<label>Real name :</label>
+		    			<input name="name" type="text" value=""/>
+	    			</div>
+	    			<div class="item">
+		    			<label>Phone :</label>
+		    			<input name="phone" type="text" value=""/>
+	    			</div>
+	    			<div class="item">
+		    			<label>E-mail :</label>
+		    			<input name="emailAddress" type="text" value=""/>
+	    			</div>
+	    			<div class="item">
+		    			<label>Profession :</label>
+		    			<input name="occupation" type="text" value=""/>
+	    			</div>
+    			</form>
+	    		<div>	
+	    			<button onclick="submit()">立即注册</button>
+	    		</div>
+    		</div>
+    		
+    	</div>
+    </div>
+</body>
+</html>

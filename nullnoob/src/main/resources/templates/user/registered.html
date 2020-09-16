@@ -1,0 +1,155 @@
+<html>
+	<title>免费注册</title>
+	<head>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous"
+/>
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+  crossorigin="anonymous"
+/>
+<script src="${ctx !}/js/jquery-3.5.1.js"></script>
+<script src="${ctx !}/js/jquery-3.5.1.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"
+></script>
+<style>
+  body {
+    background-color: rgb(245, 247, 250);
+  }
+  .main {
+    width: 1162px;
+    height: 783px;
+    background-color: #fff;
+    margin: 0 auto;
+  }
+  .r-input{
+    width: 325px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .d-input{
+    margin-top:25px;
+  }
+
+.d-input label
+{
+    display: inline-block;
+    width: 100px;
+    padding-right: 20px;
+    vertical-align: middle;
+    color: #555;
+    text-align: right;
+
+}
+
+  .m-btn-submit {
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+   .m-btn-primary {
+        color: #fff;
+        background: #387ee8;
+   }
+   .m-btn-large {
+        width: 325px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 50px;
+      }
+</style>
+<script type="text/javascript">
+function submit(){
+	console.log($('#formdata').serializeArray())
+	$.ajax({
+		type: 'POST',
+		url: '${ctx!}/user/add',
+		data: $('#formdata').serializeArray(),
+		success: function(result){
+			console.log(result)
+			if(result.code == 0){
+				window.location.href="${ctx!}/user/regSuccess";
+			}else{
+				alert(result.msg)
+			}
+		},
+	});
+}
+
+</script>
+	</head>
+	<body>
+		<div class="container">
+		  <div
+		    style="
+		      width: 1162px;
+		      height: 77px;
+		      line-height: 70px;
+		      display: flex;
+		      justify-content: flex-end;
+		    "
+		  >
+		    <p>Already have an account? <a href="${ctx!}/user/loginView">Log In Immediately</a></p>
+		  </div>
+		  <div class="main">
+		    <div style="width: 500px; height: 600px; margin: 0 auto">
+		    <div style="height:50px"></div>
+		      <div style="width:325px;border-bottom:1px solid #cdcdcd;height:50px;line-height:50px;font-size: 16px;text-align:center;margin-left:100px">Register An Account</div>
+		       <form style='margin-top:50px' id="formdata">
+		        <div class='d-input'>
+		        <label>Nationality :</label>
+		        <select style=" width: 325px; height: 50px;font-size: 14px;" name="nationality">
+			        <option>China</option>
+					<option>America</option>
+		        </select>
+		        </div>
+		       <div class='d-input'>
+		       <label>LogName :</label>
+		         <input type="text" placeholder="Please Enter Account"class="r-input" name="username" />
+		       </div>
+		       <div class='d-input'>
+		       <label>Password :</label>
+		        <input type="PassWord" placeholder="Please Enter PassWord"class="r-input" name="password" />
+		       </div>
+		      <div class='d-input'>
+		      <label>RealName :</label>
+		        <input type="text" placeholder="Please Enter RealName"class="r-input" name="name" />
+		       </div>
+		       <div class='d-input'>
+		       <label>Phone :</label>
+		        <input type="number" placeholder="Please Enter Phone"class="r-input" name="phone" />
+		       </div>
+		     <div class='d-input'>
+		     <label>E-mail :</label>
+		        <input type="text" placeholder="Please Enter E-mail"class="r-input" name="emailAddress" />
+		       </div>
+		       <div class='d-input'>
+		       <label>Profession :</label>
+		        <input type="text" placeholder="Please Enter Profession"class="r-input" name="occupation" />
+		       </div>
+		      </form>
+		      <div style="margin-top: 40px;margin-left: 30px;">
+		          <button class="m-btn m-btn-primary m-btn-large m-btn-submit" onclick="submit()" >Register</button>
+		      </div>
+		      </div>
+		    </div>
+		</div>
+	</body>
+</html>
+
+

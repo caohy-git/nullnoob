@@ -14,6 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
 		<mybatis-plus.version>3.1.1</mybatis-plus.version>
+		<redis-starter.version>2.2.3.RELEASE</redis-starter.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,6 +46,37 @@
 	       <artifactId>springfox-swagger2</artifactId>
 	       <version>2.9.2</version>
     	</dependency>
+    	<!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${redis-starter.version}</version>
+        </dependency>
+        <dependency>
+		   <groupId>org.apache.commons</groupId>
+		   <artifactId>commons-pool2</artifactId>
+		   <version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibeetl</groupId>
+			<artifactId>beetl-framework-starter</artifactId>
+			<version>1.2.33.RELEASE</version>
+		</dependency>
 	</dependencies>
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
   	
 </project>

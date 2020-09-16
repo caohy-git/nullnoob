@@ -1,0 +1,240 @@
+<html>
+  <title>LOGIN</title>
+
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous"
+  />
+
+  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous"
+  />
+  <script src="${ctx !}/js/jquery-3.5.1.js"></script>
+  <script src="${ctx !}/js/jquery-3.5.1.min.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"
+  ></script>
+  <head>
+    <style>
+      .main-login {
+        float: right;
+        width: 1043px;
+        height: 483px;
+        position: relative;
+        top: 200px;
+
+        background-color: #fff;
+        border: 1px solid #fff;
+        height: 500px;
+      }
+      .login-form {
+        width: 325px;
+        margin: 0 auto;
+        padding: 0;
+        line-height: 1;
+      }
+      .wellnew {
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05),
+          0 1px 0 rgba(255, 255, 255, 0.1);
+      }
+      .login-form .icon-email,
+      .login-form .icon-password,
+      .login-form .icon-user {
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 24px;
+        height: 24px;
+        margin: auto;
+        font-size: 24px;
+        color: #ccc;
+      }
+      .m-input,
+      .m-select-value,
+      .m-textarea {
+        color: #333;
+        padding: 0 2em 0 1em;
+        border: 1px solid #d9d9d9;
+        border-radius: 2px;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: border 0.2s;
+        -moz-transition: border 0.2s;
+        transition: border 0.2s;
+        -webkit-appearance: none;
+      }
+      .m-input-large,
+      .m-select-value-large,
+      .m-textarea-large {
+        width: 325px;
+        height: 50px;
+        font-size: 14px;
+        line-height: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      .m-input-group .m-input-in-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 24px;
+        margin: auto;
+        font-size: 0;
+        line-height: 24px;
+      }
+      .m-form-group .m-captcha,
+      .m-form-group .m-input-group,
+      .m-form-group .m-select-group {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .m-input-group {
+        position: relative;
+        font-size: 0;
+      }
+      .login-form .account-input,
+      .login-form .password-input {
+        padding-left: 35px;
+      }
+      .title {
+        font-size: 20px;
+        line-height: 28px;
+        color: #303133;
+        text-align: center;
+        padding-top: 28px;
+      }
+      .login-form .m-btn-submit {
+        display: block;
+        margin: 0 auto;
+      }
+      .m-btn-submit {
+        margin-top: 10px;
+      }
+      .m-btn-primary {
+        color: #fff;
+        background: #387ee8;
+      }
+      .m-btn-large {
+        width: 325px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 50px;
+      }
+      button {
+        -webkit-appearance: button;
+        -webkit-writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        text-align: center;
+        align-items: flex-start;
+        border-color: -internal-light-dark-color(
+          rgb(80, 141, 232),
+          rgb(80, 141, 232)
+        );
+      }
+    </style>
+    <script type="text/javascript">
+    function login(){
+    	$.ajax({
+			type: 'POST',
+			url: '${ctx !}/user/login',
+			data: $('#formdata').serializeArray(),
+			success: function(result){
+				if(result.code == 0){
+					window.location.href="${ctx!}/user/index";
+				}else{
+					alert(result.msg)
+				}	
+			},
+		});
+    }
+    </script>
+  </head>
+
+  <body style="background-color: rgb(245, 247, 250)">
+    <div class="container">
+      <div class="wellnew main-login" style="display: flex; items-algin: start">
+        <div
+          style="
+            background: url(${ctx !}/image/login-bg2.jpg) no-repeat !important;
+            background-size:100% 100%;
+            width: 641px;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+          "
+        >
+          <h1>Null Noob</h1>
+        </div>
+        <div class="rows">
+          <h2 class="title" style="font-size: 24px">Account Login</h2>
+          <div style="padding: 20px 100px 10px">
+            <div style="background: url(${ctx !}/image/login-bg2.jpg)"></div>
+            <form class="login-form m-form" id="formdata">
+              <div class="m-input-group">
+                <input
+                  type="text"
+                  placeholder="Please Enter Account"
+                  class="m-input m-input-large account-input"
+                  name="username"
+                />
+                <div class="m-input-in-icon"><!--inlcude--></div>
+                <i class="icon-user" style="background-color: #fff"
+                  ><img
+                    src="${ctx !}/image/login-user.png"
+                    style="width: 20px; height: 20px"
+                /></i>
+              </div>
+              <br />
+              <div class="m-input-group" style="margin-top: 20px">
+                <input
+                  type="password"
+                  class="m-input m-input-large account-input"
+                  placeholder="Please Enter PassWord"
+                  name="password"
+                />
+                <div class="m-input-in-icon"><!--inlcude--></div>
+                <i class="icon-user" style="background-color: #fff"
+                  ><img
+                    src="${ctx !}/image/login-pass.png"
+                    style="width: 20px; height: 20px"
+                /></i>
+              </div>
+              <div style="margin-top: 40px">
+                <div class="m-btn m-btn-primary m-btn-large m-btn-submit"
+                  id="login"
+                  style="text-align:center;cursor:pointer;"
+                  onclick="login()">LOGIN</div>
+              </div>
+            </form>
+            <div style="margin-top: 20px">
+              <p>
+                No account yet?<a
+                  rel="noopener noreferrer"
+                  href="${ctx !}/user/getReg"
+                  class="link"
+                  >Free Registration</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

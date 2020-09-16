@@ -1,6 +1,13 @@
 server:
    port: 9000
-   
+
+beetl:
+   suffix: html
+   enabled: true
+   resource-autoCheck: true
+beetlsql:
+  enabled: false
+  
 spring: 
    application:
       name: nullnoob
@@ -9,7 +16,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: 12345678
-      url: jdbc:mysql://127.0.0.1:3306/nullnoob?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://127.0.0.1:3306/nullnoob?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
       hikari:
          minimum-idle: 5
          maximum-pool-size: 30
@@ -19,6 +26,24 @@ spring:
          max-lifetime: 1800000
          connection-timeout: 30000
          connection-test-query: SELECT 1
+#   mvc:
+#    view:
+#      prefix: /WEB-INF/
+#      suffix: .jsp         
+   redis: 
+#      host: 127.0.0.1
+#      port: 6379
+      password: 
+      timeout: 500 
+      lettuce:
+         pool:
+            max-active: 8
+            max-idle: 8
+            min-idle: 0
+            max-wait: -1
+      sentinel:
+         master: mymaster
+         nodes: 127.0.0.1:26379,127.0.0.1:26380
          
 mybatis:
    configuration:

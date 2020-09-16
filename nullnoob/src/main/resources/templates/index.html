@@ -1,0 +1,399 @@
+<html>
+  <title>HOME</title>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous"
+/>
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+  crossorigin="anonymous"
+/>
+<script src="${ctx !}/js/jquery-3.5.1.js"></script>
+<script src="${ctx !}/js/jquery-3.5.1.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"
+>
+</script>
+	<head>
+		<style>
+		  .lul {
+		    display: flex;
+		    justify-content: flex-end;
+		    list-style: none;
+		  }
+		
+		  .lul li {
+		    margin-left: 30px;
+		    color: #fff;
+		    font-size: 20px;
+		    line-height: 60px;
+		  }
+		  .lul li:hover {
+		    color: #cccccc;
+		  }
+		  .contains {
+		    margin: auto;
+		    width: 1200px;
+		    display: flex;
+		    justify-content: space-between;
+		  }
+		  .main-bg {
+		    background: #353b65 url(${ctx !}/image/main-bg.jpg) center top no-repeat;
+		    background-size: 100%;
+		    min-height: 279px;
+		    height: auto !important;
+		    height: 279px;
+		  }
+		  .main-text {
+		    text-align: center;
+		    color: #fff;
+		  }
+		  .search-btn {
+		    background-color: #3f4b55;
+		    font-size: 14px;
+		    line-height: 19px;
+		    font-weight: 600;
+		    padding: 14px 30px 15px;
+		    color: #fff;
+		    box-shadow: none;
+		    border-radius: 0;
+		    display: inline-block;
+		    border: none;
+		    vertical-align: bottom;
+		  }
+		  .content-title {
+		    height: 32px;
+		    display: flex;
+		    justify-content: flex-start;
+		  }
+		  .content-label {
+		    display: flex;
+		    justify-content: space-between;
+		    border-top: 1px solid #cdcdcd;
+		    border-bottom: 1px solid #cdcdcd;
+		    width: 771px;
+		    margin-top: 20px;
+		  }
+		  .content-label-a {
+		    display: flex;
+		    justify-content: flex-start;
+		    height: 32px;
+		  }
+		  .content-label-a-a {
+		    margin-top: 5px;
+		    display: flex;
+		    justify-content: space-around;
+		  }
+		  .content-label-a-a i img {
+		    width: 22px;
+		    height: 22px;
+		  }
+		  .content-label-a-a p {
+		    line-height: 22px;
+		    margin-right: 20px;
+		    margin-left: 7px;
+		  }
+		  .content-main {
+		    width: 771px;
+		  }
+		  .content-main-text {
+		    margin-bottom: 40px;
+		  }
+		  .content-label-a-b {
+		    margin-top: 5px;
+		    display: flex;
+		    justify-content: space-around;
+		  }
+		  .content-label-a-b i img {
+		    width: 15px;
+		    height: 15px;
+		  }
+		  .content-label-a-b p {
+		    margin-right: 20px;
+		    margin-left: 7px;
+		    font-size: 2px;
+		    line-height: 1.5;
+		  }
+		
+		  .category ul li {
+		    list-style: none;
+		    padding: 8px 8px 8px 23px;
+		    background: url(${ctx !}/image/li-arrow.png) no-repeat 8px 15px;
+		    border-bottom: 1px solid #f2f2f2;
+		    color: #3b4348;
+		  }
+		  .category ul li a {
+		    color: #3b4348;
+		  }
+		  .category ul li a:hover {
+		    color: #33ccff;
+		  }
+		  .category {
+		    margin-top: 20px;
+		  }
+		  .category p {
+		    font-weight: 600;
+		    font-size: 20px;
+		  }
+		</style>
+		<script type="text/javascript">
+		window.onload=function(){
+			$.ajax({
+				type: 'GET',
+				url: '${ctx !}/article/page',
+				data: {
+					size:1,
+					current:1
+				},
+				success: function(result){
+					console.log(result)
+					if(result.code == 0){
+						if(result.data.size<=0){
+							
+						}else{
+							var d =result.data.list;
+							for(var i = 0;i < d.length;i++){
+								var t= d[i];
+								var temp = "";
+								temp += '<div class="content-main-text">'
+								temp += '	<div class="content-title">'
+								temp += '		<i><img src="${ctx !}/image/type-text.png" width:20px;height:30px /> </i>'
+								temp += '		<p style="font-size: 20px; line-height: 32px; margin-left: 10px">'
+								temp += '			Integrating WordPress with Your Website'
+								temp += '		</p>'
+								temp += '	</div>'
+								temp += '	<div class="content-label">'
+								temp += '		<div class="content-label-a">'
+								temp += '			<div class="content-label-a-a">'
+					            temp += '				<i><img src="${ctx !}/image/type-date.png" /></i>'
+					            temp += '				<p>2020-09-13 16:34</p>'    
+					            temp += '			</div>'    
+					            temp += '			<div class="content-label-a-a">'  
+					            temp += '				<i><img src="${ctx !}/image/type-label.png" /></i>'  
+					            temp += '				<p>Server & Database </p>'    
+					            temp += '			</div>'    
+					            temp += '			<div class="content-label-a-a">'  
+					            temp += '				<i><img src="${ctx !}/image/type-info.png" /></i>'  
+					            temp += '				<p>3 Comments</p>'    
+					            temp += '			</div>'    
+					            temp += '		</div>'  
+					            temp += '		<div class="content-label-a">'
+					            temp += '			<div class="content-label-a-b">'
+					            temp += '				<i><img src="${ctx !}/image/type-zan.png" /></i>'  
+					            temp += '				<p>16</p>'    
+					            temp += '			</div>'    
+					            temp += '		</div>'  
+					            temp += '	</div>'
+					          	temp += '	<div style="margin-top: 22px">'
+					          	temp += '		<p>'
+					            temp += '			 Many of us work in an endless stream of tasks, browser tasks,'
+								temp += '		     social media, emails, meetings, rushing from one thing to another,'
+								temp += '		     never pausing and never ending. Then the day is over, and we are'
+								temp += '		     exhausted, and we often have very little to show for it. And we'
+								temp += '		     start the next <a href="">Read more</a>'
+					            temp += '		</p>' 
+					            temp += '	</div>'
+								temp += '</div>'
+								$("#content-main").append(temp)
+							}
+							
+							//TODO
+						}
+						
+					}else{
+						alert(result.msg)
+					}	
+				},
+			});
+			
+		}
+		</script>
+	</head>
+	<body>
+	<div class="content">
+  <div style="background-color: black; height: 60px">
+    <div class="contains">
+      <div>
+        <span
+          style="
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: #fff;
+            line-height: 60px;
+          "
+        >
+          Null Noob Forum
+        </span>
+      </div>
+      <ul class="lul">
+        <li>Home</li>
+        <li>Personal information</li>
+        <li>Leave Comments</li>
+      </ul>
+      <div>
+       <span
+          style="
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #fff;
+            line-height: 60px;
+          "
+        >
+        <% if(isEmpty(user)){ %>
+          <a style="cursor:pointer;" href="${ctx!}/user/loginView">请登录</a>  <a style="cursor:pointer;" href="${ctx !}/user/getReg">免费注册</a>
+        <%  }else{ %>
+          欢迎您：${user.name}
+          <% } %>
+        </span>
+        
+      </div>
+    </div>
+  </div>
+  <div class="main-bg">
+    <div class="main-text" style="font-size: 30px; padding-top: 50px">
+      Have a Question?
+    </div>
+    <div class="main-text" style="padding-top: 10px">
+      If you have any question you can ask below or enter what you are looking
+      for!
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Type your search terms here"
+          style="width: 866px; height: 48px"
+        />
+        <button class="search-btn" style="margin-left: 20px; margin-top: 30px">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="contains">
+    <div style="display: flex; justify-content: center; padding-top: 55px">
+      <div class="content-main">
+      	<div id="content-main">
+	        <div class="content-main-text">
+	          <div class="content-title">
+	            <i><img src="${ctx !}/image/type-text.png" width:20px;height:30px /> </i>
+	            <p style="font-size: 20px; line-height: 32px; margin-left: 10px">
+	              Integrating WordPress with Your Website
+	            </p>
+	          </div>
+	          <div class="content-label">
+	            <div class="content-label-a">
+	              <div class="content-label-a-a">
+	                <i><img src="${ctx !}/image/type-date.png" /></i>
+	                <p>2020-09-13 16:34</p>
+	              </div>
+	              <div class="content-label-a-a">
+	                <i><img src="${ctx !}/image/type-label.png" /></i>
+	                <p>Server & Database</p>
+	              </div>
+	              <div class="content-label-a-a">
+	                <i><img src="${ctx !}/image/type-info.png" /></i>
+	                <p>3 Comments</p>
+	              </div>
+	            </div>
+	            <div class="content-label-a">
+	              <div class="content-label-a-b">
+	                <i><img src="${ctx !}/image/type-zan.png" /></i>
+	                <p>16</p>
+	              </div>
+	            </div>
+	          </div>
+	          <div style="margin-top: 22px">
+	            <p>
+	              Many of us work in an endless stream of tasks, browser tasks,
+	              social media, emails, meetings, rushing from one thing to another,
+	              never pausing and never ending. Then the day is over, and we are
+	              exhausted, and we often have very little to show for it. And we
+	              start the next <a href="">Read more</a>
+	            </p>
+	          </div>
+	        </div>
+      	</div>
+        <div>
+       	<nav aria-label="Page navigation">
+		  <ul class="pagination pagination-sm">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+       </div>
+      </div>
+      
+      <div style="margin-left: 40px">
+        <div
+          style="
+            width: 100%;
+            height: 100px;
+            background-color: #fefbdc;
+            border: 1px solid #e9e6c4;
+            padding: 10px 10px 10px 10px;
+            box-sizing:border-box;
+          "
+        >
+          <p style="font-weight: 600; font-size: 20px">Support</p>
+          Need more support? If you did not found an answer, contact us for
+          further help.
+        </div>
+        <div
+          style="
+            width: 100%;
+            height: 131px;
+            background-color: #fefbdc;
+            border: 1px solid #e9e6c4;
+            padding: 10px 10px 10px 10px;
+            box-sizing:border-box;
+          "
+        >
+          <p style="font-weight: 600; font-size: 20px">Publish</p>
+          publish an article? If you have something you want to share with
+           others, you can publish your own articles.
+           <a style="font-size:20px;cursor:pointer;" href="${ctx !}/article/addArticleView">Publish a article</a>
+        </div>
+        <div class="category">
+          <p>Categories</p>
+          <ul style="padding: 0">
+            <li><a>Advanced Techniques</a></li>
+            <li><a>Designing in WordPress</a></li>
+            <li><a>Server & Database</a></li>
+            <li><a>Theme Development</a></li>
+            <li><a>Website Dev</a></li>
+            <li><a>WordPress for Beginners</a></li>
+            <li><a>WordPress Plugins</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	</body>
+
+
+</html>

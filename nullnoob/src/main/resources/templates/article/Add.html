@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+    <script src="${ctx !}/js/jquery-3.5.1.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+    <script src="${ctx !}/js/HandyEditor.min.js"></script>
+    <style type="text/css">
+      .r-input {
+        width: 100%;
+        height: 30px;
+        font-size: 14px;
+        line-height: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      .d-input {
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+      }
+
+      .d-input label {
+        display: inline-block;
+        width: 100px;
+        padding-right: 20px;
+        vertical-align: middle;
+        color: #555;
+        text-align: right;
+      }
+
+      .m-btn-submit {
+        display: block;
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      .m-btn-primary {
+        color: #fff;
+        background: #387ee8;
+      }
+      .m-btn-large {
+        width: 50px;
+        text-align: center;
+        height: 30px;
+        /* font-size: 16px; */
+        line-height: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 5px #387ee8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div
+        style="
+          width: 100%;
+          height: 77px;
+          line-height: 70px;
+          display: flex;
+          justify-content: flex-end;
+        "
+      >
+        <a>Back To Main Page</a>
+      </div>
+      <div
+        style="
+          width: 325px;
+          height: 50px;
+          font-size: 24px;
+          text-align: center;
+          margin: 0 auto;
+        "
+      >
+        Add &nbsp A &nbsp Content
+      </div>
+      <div class="d-input" style="margin-top: 40px">
+        <label>Title</label>
+        <input
+          type="text"
+          placeholder="Please Enter Phone"
+          class="r-input"
+          name="account"
+        />
+      </div>
+      <div class="d-input">
+        <label>Category</label>
+        <select style="width: 100%; height: 30px; font-size: 14px">
+          <option>Advanced Techniques</option>
+          <option>Designing in WordPress</option>
+          <option>Server & Database</option>
+          <option>Theme Development</option>
+          <option>Website Dev</option>
+        </select>
+      </div>
+      <div class="d-input" style="display: flex; align-items: flex-start">
+        <label>Content</label>
+        <textarea
+          id="editor"
+          name="editor"
+          rows="5"
+          style="display: none"
+        ></textarea>
+      </div>
+      <div style="margin-left: 30px; display: flex; justify-content: flex-end">
+        <div class="m-btn m-btn-primary m-btn-large m-btn-submit">Save</div>
+        <div class="m-btn m-btn-primary m-btn-large m-btn-submit">Clear</div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var he = HE.getEditor("editor", {
+        width: "1120px",
+        height: "400px",
+        autoHeight: true,
+        autoFloat: false,
+        topOffset: 0,
+        uploadPhoto: true,
+        //上传文件的接口路径
+        uploadPhotoHandler: "",
+        uploadPhotoSize: 0,
+        uploadPhotoType: "gif,png,jpg,jpeg",
+        uploadPhotoSizeError: "不能上传大于××KB的图片",
+        uploadPhotoTypeError: "只能上传gif,png,jpg,jpeg格式的图片",
+        lang: "zh-jian",
+        skin: "HandyEditor",
+        externalSkin: "",
+        item: [
+          "bold",
+          "italic",
+          "strike",
+          "underline",
+          "fontSize",
+          "fontName",
+          "paragraph",
+          "color",
+          "backColor",
+          "|",
+          "center",
+          "left",
+          "right",
+          "full",
+          "indent",
+          "outdent",
+          "|",
+          "link",
+          "unlink",
+          "textBlock",
+          "code",
+          "selectAll",
+          "removeFormat",
+          "trash",
+          "|",
+          "image",
+          "expression",
+          "subscript",
+          "superscript",
+          "horizontal",
+          "orderedList",
+          "unorderedList",
+          "|",
+          "undo",
+          "redo",
+          "|",
+          "html",
+          "|",
+          "about",
+        ],
+      });
+    </script>
+  </body>
+</html>
